@@ -54,5 +54,9 @@ public class EventPlannerTest {
         EventPlanner testEventPlanner = new EventPlanner(4, 25, "american", "soda", "dj");
         assertEquals(0, testEventPlanner.discountQualifier("none"));
     }
-
+    @Test
+    public void newEventPlanner_qualifyForDiscount_140() {
+        EventPlanner testEventPlanner = new EventPlanner(4, 25, "american", "soda", "dj");
+        assertEquals(1450, testEventPlanner.discountApplier("epicodus"));
+    }
 }
