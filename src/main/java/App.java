@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+
 public class App {
     public static void main(String[] args) {
         System.out.println("Welcome to Simply Catered");
@@ -38,17 +39,12 @@ public class App {
 
             EventPlanner userEvent = new EventPlanner(duration, guestCount, food, beverage, entertainment);
 
-            int userTotalCost = EventPlanner.calculateCostTotal(userEvent.receiveGuestTimeDuration(), userEvent.countExpectedGuests(),userEvent.getChosenFood(),userEvent.getChosenBeverage(),userEvent.getChosenEntertainment());
-
-            System.out.println("Fantastic! Our calculations show that your total cost is $"+userTotalCost+".00");
+            System.out.println("Fantastic! Our calculations show that your total cost is $"+userEvent.calculateCostTotal()+".00");
 
             System.out.println("Finally, enter your promotion code now to apply discount.");
             String discountCode = bufferedReader.readLine();
 
-            int totalDiscount = EventPlanner.discountQualifier(discountCode);
-
-            int finalTotalCost = userTotalCost - totalDiscount;
-            System.out.println(name+", your final total cost is $"+finalTotalCost+".00 after any valid discount is applied.");
+            System.out.println(name+", your final total cost is $"+userEvent.discountApplier(discountCode)+".00 after any valid discount is applied.");
             System.out.println("This price reflects the serving of "+userEvent.getChosenFood()+" food and "+userEvent.getChosenBeverage()+" for beverages.");
             System.out.println("The option for entertainment selection was: "+userEvent.getChosenEntertainment());
             System.out.println("This "+userEvent.receiveGuestTimeDuration()+" hour event was estimated for "+userEvent.countExpectedGuests()+" guests");
